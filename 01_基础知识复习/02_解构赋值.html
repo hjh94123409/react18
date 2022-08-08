@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    <script>
+
+        const arr = ['孙悟空', '猪八戒']
+
+        // let a, b
+
+        const [a, b] = arr 
+
+        console.log(a, b)
+
+        function fn(){
+            return ['沙和尚', '唐僧']
+        }
+
+        const [c, d] = fn()
+
+        console.log(c, d)
+
+        const arr2 = ['孙悟空', '猪八戒','沙和尚', '唐僧']
+        const [e, f, ...g] = arr2 
+        console.log(e, f, g)
+
+        const obj = {
+            name: '孙悟空',
+            age: 19,
+            gender: '男'
+        }
+
+        let h, i, j 
+
+        ({name: h, age: i, gender: j} = obj)
+
+        console.log(h, i , j)
+
+        // const {name: name, age: age, gender: gender} = obj
+        const {name, age, gender} = obj
+
+        console.log(name, age, gender)
+
+
+    </script>
+</body>
+</html>

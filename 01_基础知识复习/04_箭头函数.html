@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+
+        const fn = function(a){
+            return 'hello'
+        }
+
+        const fn2 = a => a + '--' + 'hello'
+
+        console.log(fn2(23))
+
+        const fn3 = (...args) => {
+            // console.log(arguments) //箭头函数 中没有 arguments
+            console.log(args)
+        }
+
+        fn3('a',123)
+
+        const fn4 = () => {
+            console.log(this)  //widnow
+        }
+        fn4()
+
+        const obj = {
+            hello: () => {
+                console.log(this)
+            }
+        }
+
+        obj.hello() //winodw,箭头函数没有自身的this,它的this总是外层作用域的this
+
+        // 箭头函数不能作为构造函数调用
+
+        // 无法通过call,apply,bind指定函数this
+
+
+
+
+    </script>
+</body>
+</html>

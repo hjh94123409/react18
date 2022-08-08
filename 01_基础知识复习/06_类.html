@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类</title>
+</head>
+<body>
+    <script>
+
+        /* 
+
+        */
+
+        class Person {
+            // name = '孙悟空'
+            // age = 18
+
+            //构造函数
+            constructor(name, age){
+                this.name = name 
+                this.age = age
+            }
+
+            //实例方法
+            run(){
+                console.log('跑')
+            }
+        }
+
+        const per = new Person('孙悟空', 18)
+
+        console.log(per)
+
+        class MyClass {
+
+            constructor(){
+                // this.fn = this.fn.bind(this) //将fn方法的this绑定为当前实例
+            }
+
+            /* 
+                类中的所有代码都会在严格模式下执行 'use strict'
+                函数的this不再是window,而是undefined
+            */
+            // fn(){
+            //     console.log(this)
+            // }
+            
+            // 箭头函数永远为当前实例
+            fn = () => {    
+                console.log('===>', this)
+            }
+
+
+        }
+
+        const mc = new MyClass()
+
+        mc.fn()
+
+        const test = mc.fn 
+        test()
+
+
+        class Animal{
+            constructor(name, age){
+                this.name = name 
+                this.age = age 
+            }
+
+            sayHello = () => {
+                console.log('动物在叫')
+            }
+        }
+
+
+        class Dog extends Animal {
+            sayHello = () => {
+                console.log('汪汪')
+            }
+        }
+
+
+        const dog = new Dog('旺财', 5)
+
+        console.log(dog.name, dog.age)
+
+        dog.sayHello()
+
+        class Snake extends Animal {
+            constructor(name, age, length){
+                super(name, age) //调用父类构造函数, 写到第一行
+                this.length = length
+            }
+        }
+
+        const snake = new Snake('呵呵', 5, 10)
+
+        
+
+
+    </script>
+</body>
+</html>
