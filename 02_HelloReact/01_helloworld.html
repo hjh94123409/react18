@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="./script/react.development.js"></script>
+    <script src="./script/react-dom.development.js"></script>
+    <script>
+
+        // const div = document.createElement('div')
+        // div.innerText = '我是一个DIV'
+        // const root = document.getElementById('root')
+        // root.appendChild(div)
+
+        /* 
+            React.createElement 
+                - 用来创建一个React元素
+                - 参数 
+                    1. 元素名（组件名）
+                    2. 元素中的属性
+                    3. 元素的子元素（内容）
+        */
+        const div = React.createElement('div', { id: 'hehele' }, '我是React创建的DIV')
+
+        /* 
+            ReactDOM.createRoot
+                - 用来创建React根元素
+                - 需要一个DOM元素作为参数
+        */
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+
+        root.render(div)
+        
+
+    </script>
+</body>
+</html>

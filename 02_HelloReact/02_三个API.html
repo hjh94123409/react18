@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>三个API</title>
+    </head>
+
+    <body>
+        <button id="btn">我是按钮</button>
+        <div id="root"></div>
+        <script src="./script/react.development.js"></script>
+        <script src="./script/react-dom.development.js"></script>
+        <script>
+            /* 
+            React.createElement 
+                - 用来创建一个React元素
+                - 参数 
+                    1. 元素的名称（html标签必须小写）
+                    2. 标签中的属性
+                        - class属性需要使用 className
+                        - 在设置事件时，属性名需要修改为驼峰命名法
+                    3. 元素的内容（子元素）
+                - 注意点
+                    React元素最终会通过虚拟DOM转换为真实的DOM元素
+                    React元素一旦创建就无法修改，只能通过新创建的元素进行替换
+            */
+            const button = React.createElement(
+                "button",
+                {
+                    className: "hehele",
+                    type: "button",
+                    onClick: () => {
+                        alert("你点我干啥");
+                    },
+                },
+                "点我一下"
+            );
+
+            const div = React.createElement(
+                "div",
+                { id: "box" },
+                "我是一个DIV",
+                button
+            );
+            
+            
+            /* 
+                
+            */
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
+            /* 
+                root.render()
+                    - 用来将React元素渲染到根元素中
+                    - 根元素中所有的内容都会被删除，被React元素替换
+                    - 当重复调用render()时，React会将两次的渲染结果进行比较，它会确保只修改那些发生变化的元素，对DOM做最少的修改
+            */    
+            root.render(div);
+
+            const btn = document.getElementById("btn");
+            btn.addEventListener("click", () => {
+                const button = React.createElement(
+                    "button",
+                    {
+                        className: "hehele",
+                        type: "button",
+                        onClick: () => {
+                            alert("你点我干啥");
+                        },
+                    },
+                    "click me"
+                );
+
+                const div = React.createElement(
+                    "div",
+                    { id: "box" },
+                    "我是一个DIV",
+                    button
+                );
+
+                root.render(div);
+            });
+        </script>
+    </body>
+</html>

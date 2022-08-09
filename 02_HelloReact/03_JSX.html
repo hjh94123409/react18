@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSX</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="./script/react.development.js"></script>
+        <script src="./script/react-dom.development.js"></script>
+        <script src="./script/babel.min.js"></script>
+
+        <script type="text/babel">
+            /* 
+                JSX 就是React.createElement()的语法糖
+                JSX 在执行前都会被babel转换为js代码
+
+                注意事项：
+                    1. JSX不是字符串，不要加引号
+                    2. JSX中html标签应该小写，React组件应该大写开头
+                    3. JSX中有且只有一个根标签
+                    4. JSX的标签必须正确结束
+                    5. 在JSX中可以使用{}嵌入表达式
+                        - 有值的语句就是表达式
+                    6. 如果表达式是 空值，布尔值，undefined, null 将会不显示
+                    7. 在JSX中，属性可以直接在标签中设置
+                        注意：
+                            1. class需要使用className
+                            2. style 中必须使用对象
+                    
+
+            */
+
+            const name = '孙悟空'
+
+            const root = ReactDOM.createRoot(document.getElementById('root'))
+            const div = (
+                <div
+                    id="box"
+                    onClick={() => {
+                        alert('哈哈')
+                    }}
+                    className="box"
+                    style={{
+                        backgroundColor: 'yellowgreen',
+                        border: '10px solid purple',
+                    }}
+                >
+                    我是一个DIV
+                    <button>我是按钮</button>
+                    <div>{name}</div>
+                </div>
+            )
+            root.render(div)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>渲染列表</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="./script/react.development.js"></script>
+        <script src="./script/react-dom.development.js"></script>
+        <script src="./script/babel.min.js"></script>
+        <script type="text/babel">
+            /* 
+                {}中只能用来放js表达式，而不能放语句(if for)
+            */
+            const name = '孙悟空'
+            const lang = 'cn'
+
+            // const div = <div>Hello {name}</div>
+            let div
+
+            if (lang === 'en') {
+                div = <div>hello {name}</div>
+            } else {
+                div = <div>你好 {name}</div>
+            }
+
+            /* 
+                JSX中会自动将数组中的元素在页面中显示
+            */
+            const arr = ['孙悟空', '猪八戒', '沙和尚']
+
+            // const list = <div>{arr}</div>
+            // const list = []
+            // for (let index = 0; index < arr.length; index++) {
+            //     list.push(<li>{arr[index]}</li>)
+            // }
+
+            // const list = arr.map(item => <li>{item}</li>)
+
+            const list = (
+                <ul>
+                    {arr.map((item) => (
+                        <li>{item}</li>
+                    ))}
+                </ul>
+            )
+
+            const root = ReactDOM.createRoot(document.getElementById('root'))
+
+            root.render(list)
+        </script>
+    </body>
+</html>
