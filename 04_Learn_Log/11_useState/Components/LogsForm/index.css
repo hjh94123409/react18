@@ -1,0 +1,32 @@
+.logs-form {
+    background-color: #eae2b7;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.form-item {
+    height: 35px;
+    line-height: 35px;
+    display: flex;
+    margin: 10px 0;
+}
+.form-item label {
+    padding: 0 10px;
+}
+.form-item input {
+    flex: auto;
+}
+.form-btn {
+    text-align: center;
+}
+.form-btn button {
+    width: 80px;
+    background-color: chocolate;
+    border: none;
+    color: white;
+    height: 40px;
+    font-size: 24px;
+    transition: 0.3s;
+}
+.form-btn button:hover {
+    background-color: crimson;
+}

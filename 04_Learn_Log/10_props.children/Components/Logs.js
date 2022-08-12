@@ -1,5 +1,6 @@
 import LogItem from './LogItem'
 import './Logs.css'
+import Card from './UI/Card/Card'
 const Logs = () => {
     //模拟一组数据
 
@@ -32,9 +33,7 @@ const Logs = () => {
 
     const logItem = logsData.map((item) => <LogItem {...item} key={item.id} />)
 
-    // <LogItem date={item.date} desc={item.desc} time={item.time} />
-
-    return <div className="logs">{logItem}</div>
+    return <Card className="logs">{logItem}</Card>
 }
 
 export default Logs
