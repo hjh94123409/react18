@@ -1,0 +1,35 @@
+@import '../../../../base.module.scss';
+.Bar {
+    position: fixed;
+    width: 700rem;
+    height: 80rem;
+    bottom: 30rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: $color-bar;
+    border-radius: 40rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 12;
+}
+.Button {
+    border: none;
+    background-color: $color-button;
+    width: 180rem;
+    border-radius: 40rem;
+    font-size: 36rem;
+}
+.TotalPrice {
+    color: white;
+    margin-left: 60rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 36rem;
+    &:before {
+        content: '￥';
+        font-size: 24rem;
+        margin-top: 10rem;
+    }
+}

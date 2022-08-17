@@ -1,0 +1,67 @@
+$border-color: #f2f2f2;
+.Checkout {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #eee;
+    padding: 20rem;
+}
+.Close {
+    color: black;
+    font-size: 36rem;
+    line-height: 1;
+}
+
+.Box {
+    background-color: white;
+    border-radius: 40rem;
+    padding: 20rem;
+}
+.Header {
+    border-bottom: 1px solid $border-color;
+    height: 80rem;
+    display: flex;
+    align-items: center;
+    font-size: 18rem;
+}
+.List {
+    background-color: antiquewhite;
+    max-height: 500rem;
+    overflow: auto;
+}
+.Footer {
+    height: 120rem;
+    border-top: 1px dashed $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    p {
+        font-weight: bold;
+        font-size: 30rem;
+        &::before {
+            content: '合计:￥';
+            font-weight: normal;
+            font-size: 20rem;
+        }
+    }
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        width: 20rem;
+        height: 20rem;
+        border-radius: 50%;
+        background-color: #eee;
+        top: -10rem;
+    }
+    &::before {
+        left: -30rem;
+    }
+    &::after {
+        right: -30rem;
+    }
+}

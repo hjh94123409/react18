@@ -1,0 +1,10 @@
+.border {
+    border-width: 10px;
+    border-style: dotted;
+}
+.redBorderColor {
+    border-color: red;
+}
+.blueBorderColor {
+    border-color: blue;
+}

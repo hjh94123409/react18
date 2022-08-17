@@ -1,0 +1,32 @@
+.Item {
+    display: flex;
+}
+.ImgBox {
+    width: 140rem;
+    > img {
+        width: 100%;
+    }
+}
+.Content {
+    flex: auto;
+    margin-left: 20rem;
+    justify-content: space-evenly;
+    display: flex;
+    flex-flow: column;
+    h2 {
+        font-size: 24rem;
+    }
+}
+.PriceOuter {
+    display: flex;
+    justify-content: space-between;
+}
+.Price {
+    font-size: 24rem;
+    font-weight: bold;
+    &::before {
+        content: '￥';
+        font-size: 20rem;
+        font-weight: normal;
+    }
+}
