@@ -1,0 +1,40 @@
+@import '../../../base.module.scss';
+.Meal {
+    border-bottom: 1px solid $color-border-bottom;
+    display: flex;
+    align-items: center;
+    padding: 30rem 30rem 30rem 20rem;
+    .ImgBox {
+        width: 300rem;
+        img {
+            width: 100%;
+        }
+    }
+    .Content {
+        flex: auto;
+        h2 {
+            font-size: 36rem;
+            margin: 0;
+            color: #333;
+        }
+        p {
+            color: $color-p;
+            font-size: 24rem;
+            text-align: justify;
+            padding-right: 30rem;
+        }
+    }
+    .Other {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40rem;
+        > span {
+            font-size: 36rem;
+            font-weight: bold;
+            &:before {
+                content: '￥';
+                font-size: 24rem;
+            }
+        }
+    }
+}

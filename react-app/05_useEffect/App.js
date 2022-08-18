@@ -6,7 +6,7 @@ const App = () => {
 
     useEffect(() => {
         setCount(1)
-    })
+    }, [count])
 
     return <div>{count}</div>
 }

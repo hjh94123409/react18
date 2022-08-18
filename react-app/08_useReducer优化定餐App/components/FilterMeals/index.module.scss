@@ -1,0 +1,33 @@
+@import '../../base.module.scss';
+.FilterMeals {
+    position: fixed;
+    height: 120rem;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid $color-border-bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.InputOuter {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.SearchInput {
+    width: 660rem;
+    background-color: $color-border-bottom;
+    border: none;
+    height: 60rem;
+    border-radius: 14px;
+    padding-left: 60rem;
+    outline: none;
+    font-size: 32rem;
+}
+.SearchIcon {
+    position: absolute;
+    color: red;
+    font-size: 40rem;
+    left: 10rem;
+    color: #aaa;
+}
