@@ -1,7 +1,6 @@
 import React from 'react'
 import Student from './Student'
 import classes from './index.module.css'
-import StudentForm from '../StudentForm'
 const StudentList = (props) => {
     return (
         <div>
@@ -13,17 +12,13 @@ const StudentList = (props) => {
                         <th>年龄</th>
                         <th>性别</th>
                         <th>地址</th>
-                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     {props.stu.map((item) => {
-                        return <Student key={item.id} stu={item} />
+                        return <Student key={item.id} stu={item.attributes} />
                     })}
                 </tbody>
-                <tfoot>
-                    <StudentForm />
-                </tfoot>
             </table>
         </div>
     )
