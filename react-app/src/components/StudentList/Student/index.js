@@ -1,27 +1,10 @@
-import React, { useState, useContext } from 'react'
-import useFetch from '../../../hooks/useFetch'
-import StuContext from '../../../store/StuContext'
+import React, { useState } from 'react'
+
 import StudentForm from '../../StudentForm'
 const Student = (props) => {
     const [isEdit, setIsEdit] = useState(false)
 
-    const ctx = useContext(StuContext)
-
-    const {
-        loading,
-        error,
-        fetchData: delStu,
-    } = useFetch(
-        {
-            url: `students/${props.stu.id}`,
-            method: 'delete',
-        },
-        ctx.fetchData
-    )
-
-    const deleteHandler = () => {
-        delStu()
-    }
+    const deleteHandler = () => {}
 
     const cancelHandler = () => {
         setIsEdit(false)
@@ -41,9 +24,11 @@ const Student = (props) => {
                     </td>
                 </tr>
             )}
-            {isEdit && <StudentForm stu={props.stu} onCancel={cancelHandler} />}
+            {isEdit && (
+                <StudentForm stuId={props.stu.id} onCancel={cancelHandler} />
+            )}
 
-            {loading && (
+            {/* {loading && (
                 <tr>
                     <td colSpan={5}>正在删除数据</td>
                 </tr>
@@ -52,7 +37,7 @@ const Student = (props) => {
                 <tr>
                     <td colSpan={5}>删除失败...</td>
                 </tr>
-            )}
+            )} */}
         </>
     )
 }

@@ -21,9 +21,7 @@ const StudentList = (props) => {
                         return <Student key={item.id} stu={item} />
                     })}
                 </tbody>
-                <tfoot>
-                    <StudentForm />
-                </tfoot>
+                <tfoot>{/* <StudentForm /> */}</tfoot>
             </table>
         </div>
     )

@@ -1,28 +1,23 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import { useGetStudentByIdQuery } from '../../store/studentApi'
 import classes from './index.module.scss'
-import StuContext from '../../store/StuContext'
-import useFetch from '../../hooks/useFetch'
+
 const StudentForm = (props) => {
     const [formData, setFormData] = useState({
-        name: props.stu ? props.stu.attributes.name : '',
-        age: props.stu ? props.stu.attributes.age : '',
-        gender: props.stu ? props.stu.attributes.gender : '男',
-        address: props.stu ? props.stu.attributes.address : '',
+        name: '',
+        age: '',
+        gender: '男',
+        address: '',
     })
 
-    const ctx = useContext(StuContext)
+    const { data: stuData, isSuccess } = useGetStudentByIdQuery(props.stuId)
 
-    const {
-        loading,
-        error,
-        fetchData: updateStudent,
-    } = useFetch(
-        {
-            url: props.stu ? `students/${props.stu.id}` : 'students',
-            method: props.stu ? 'put' : 'post',
-        },
-        ctx.fetchData
-    )
+    useEffect(() => {
+        if (isSuccess) {
+            setFormData(stuData.attributes)
+        }
+    }, [isSuccess, stuData])
 
     const nameChangeHandler = (e) => {
         setFormData((preState) => {
@@ -44,14 +39,9 @@ const StudentForm = (props) => {
             return { ...preState, address: e.target.value }
         })
     }
-    const submitHandler = () => {
-        // console.log(formData)
-        updateStudent(formData)
-    }
+    const submitHandler = () => {}
 
-    const updateHandler = () => {
-        updateStudent(formData)
-    }
+    const updateHandler = () => {}
 
     return (
         <>
@@ -87,18 +77,18 @@ const StudentForm = (props) => {
                     />
                 </td>
                 <td>
-                    {props.stu && (
+                    {props.stuId && (
                         <>
                             <button onClick={props.onCancel}>取消</button>
                             <button onClick={updateHandler}>确认</button>
                         </>
                     )}
-                    {!props.stu && (
+                    {!props.stuId && (
                         <button onClick={submitHandler}>添加</button>
                     )}
                 </td>
             </tr>
-            {loading && (
+            {/* {loading && (
                 <tr>
                     <td colSpan={5}>添加中...</td>
                 </tr>
@@ -107,7 +97,7 @@ const StudentForm = (props) => {
                 <tr>
                     <td colSpan={5}>添加失败</td>
                 </tr>
-            )}
+            )} */}
         </>
     )
 }

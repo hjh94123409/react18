@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Redux</title>
+    </head>
+    <body>
+        <button id="sub">减少</button>
+        <span id="count">1</span>
+        <span id="name">1</span>
+        <button id="add">增加</button>
+        <button id="add_N">增加N</button>
+        <script src="https://cdn.bootcdn.net/ajax/libs/redux/4.2.0/redux.min.js"></script>
+        <script>
+            const subElement = document.getElementById('sub')
+            const addElement = document.getElementById('add')
+            const addNElement = document.getElementById('add_N')
+            const countElement = document.getElementById('count')
+            const nameElement = document.getElementById('name')
+
+            // let count = 0
+
+            const reducer = (state = { count: 1, name: '孙悟空' }, action) => {
+                switch (action.type) {
+                    case 'ADD':
+                        return { count: state.count + 1 }
+                    case 'SUB':
+                        return { count: state.count - 1 }
+                    case 'ADD_N':
+                        return { count: state.count + action.payLoad }
+                    default:
+                        return state
+                }
+            }
+
+            const store = Redux.createStore(reducer)
+
+            // console.log(store)
+
+            
+
+            store.subscribe(() => {
+                countElement.innerText = store.getState().count
+            })
+            nameElement.innerText = store.getState().name
+
+            subElement.addEventListener('click', () => {
+                // count--
+                // countElement.innerText = count
+                store.dispatch({ type: 'SUB' })
+            })
+
+            addElement.addEventListener('click', () => {
+                // count++
+                // countElement.innerText = count
+                store.dispatch({ type: 'ADD' })
+            })
+
+            addNElement.addEventListener('click', () => {
+                // count++
+                // countElement.innerText = count
+                store.dispatch({ type: 'ADD_N', payLoad: 50 })
+            })
+        </script>
+    </body>
+</html>
