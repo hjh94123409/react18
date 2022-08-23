@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
+import { useDelStudentMutation } from '../../../store/studentApi'
 
 import StudentForm from '../../StudentForm'
 const Student = (props) => {
     const [isEdit, setIsEdit] = useState(false)
 
-    const deleteHandler = () => {}
+    // 返回的是一个数组
+    // 操作的触发器
+    // 结果集
+    const [delStudent, { isSuccess }] = useDelStudentMutation()
+
+    const deleteHandler = () => {
+        delStudent(props.stu.id)
+    }
 
     const cancelHandler = () => {
         setIsEdit(false)
@@ -12,7 +20,7 @@ const Student = (props) => {
 
     return (
         <>
-            {!isEdit && (
+            {!isEdit && !isSuccess && (
                 <tr>
                     <td>{props.stu.attributes.name}</td>
                     <td>{props.stu.attributes.age}</td>
@@ -24,6 +32,13 @@ const Student = (props) => {
                     </td>
                 </tr>
             )}
+
+            {isSuccess && (
+                <tr>
+                    <td colSpan={5}>数据已删除！！</td>
+                </tr>
+            )}
+
             {isEdit && (
                 <StudentForm stuId={props.stu.id} onCancel={cancelHandler} />
             )}

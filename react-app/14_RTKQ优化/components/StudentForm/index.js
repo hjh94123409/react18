@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import { useGetStudentByIdQuery } from '../../store/studentApi'
+import {
+    useGetStudentByIdQuery,
+    useAddStudentMutation,
+    useUpdateStudentMutation,
+} from '../../store/studentApi'
 import classes from './index.module.scss'
 
 const StudentForm = (props) => {
@@ -11,7 +15,14 @@ const StudentForm = (props) => {
         address: '',
     })
 
-    const { data: stuData, isSuccess } = useGetStudentByIdQuery(props.stuId)
+    const [addStudent, { isSuccess: isAddSuccess }] = useAddStudentMutation()
+    const [updateStudent, { isSuccess: isUpdateSuccess }] =
+        useUpdateStudentMutation()
+
+    const { data: stuData, isSuccess } = useGetStudentByIdQuery(props.stuId, {
+        skip: !props.stuId,
+        refetchOnMountOrArgChange: false,
+    })
 
     useEffect(() => {
         if (isSuccess) {
@@ -39,9 +50,23 @@ const StudentForm = (props) => {
             return { ...preState, address: e.target.value }
         })
     }
-    const submitHandler = () => {}
+    const submitHandler = () => {
+        addStudent(formData)
+        setFormData({
+            name: '',
+            age: '',
+            gender: '男',
+            address: '',
+        })
+    }
 
-    const updateHandler = () => {}
+    const updateHandler = () => {
+        updateStudent({
+            id: props.stuId,
+            attributes: formData,
+        })
+        props.onCancel()
+    }
 
     return (
         <>
