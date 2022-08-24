@@ -1,0 +1,7 @@
+.Menu {
+    display: flex;
+}
+.Menu li {
+    list-style: none outside;
+    margin: 0 30px;
+}
